@@ -614,25 +614,6 @@ section.section-overview {
   margin: 4rem auto auto auto;
 }
 
-.overview-subcontent {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  gap: 0.75rem;
-}
-
-.overview-subcontent .overview-subcontent-txt {
-  font-size: 1.4vw;
-  color: var(--primary);
-  font-weight: 400;
-  -webkit-transition: all 0.5s ease;
-  -o-transition: all 0.5s ease;
-  transition: all 0.5s ease;
-}
-
 .overview-form {
   padding: 2rem 2.5rem;
   border-radius: 9px;
@@ -1088,11 +1069,6 @@ section.section-amenities {
 .amens-icon img {
   width: 70px !important;
   height: 90px;
-}
-
-.overview-subcontent-icon img {
-  width: 50px;
-  height: 50px;
 }
 
 .amens-icon {
@@ -1608,19 +1584,6 @@ section.section-thankyou {
     margin: 3rem auto auto auto;
   }
 
-  .overview-subcontent {
-    -webkit-box-pack: center;
-    -ms-flex-pack: center;
-    justify-content: center;
-  }
-
-  .overview-subcontent .overview-subcontent-txt {
-    font-size: 1rem;
-    -webkit-transition: all 0.5s ease;
-    -o-transition: all 0.5s ease;
-    transition: all 0.5s ease;
-  }
-
   .gallery-swiper-container {
     width: 90%;
     margin: 2.75rem auto auto auto;
@@ -1917,13 +1880,6 @@ section.section-thankyou {
     transition: all 0.5s ease;
   }
 
-  .overview-subcontent .overview-subcontent-txt {
-    font-size: 0.85rem;
-    -webkit-transition: all 0.5s ease;
-    -o-transition: all 0.5s ease;
-    transition: all 0.5s ease;
-  }
-
   .gallery-swiper-container .swiper-nav .swiper-button {
     width: 45px;
     height: 45px;
@@ -2086,8 +2042,6 @@ body { color: var(--text-color); }
 .hero-card .hc-item span { font-size: 0.9rem; opacity: 0.85; }
 
 /* icons that replaced template images */
-.overview-subcontent-icon i { font-size: 1.9rem; color: var(--accent); width: 50px; text-align: center; }
-.overview-subcontent .overview-subcontent-txt { color: var(--primary); font-weight: 500; }
 .divider .flower i { color: var(--accent); font-size: 1.35rem; }
 .divider .line { background-color: rgba(0, 16, 88, 0.12); }
 .divider .line.line-1::after, .divider .line.line-2::after { background-color: var(--accent); }
