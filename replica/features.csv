@@ -1,0 +1,28 @@
+feature,area,priority,original,clone,notes
+Sticky header with section anchor links,navigation,must,yes,yes,offcanvas menu on mobile
+Hero banner image (desktop and mobile versions),hero,must,yes,yes,Bootstrap carousel with one slide
+Overview copy with USP icon list,overview,must,yes,yes,8 USPs
+Lead form: name phone email consent,lead capture,must,yes,yes,3 copies: overview contact modal
+Client-side validation (10-digit phone starting 6-9),lead capture,must,yes,yes,custom-validate.js
+Enquiry modal opened from every CTA,lead capture,must,yes,yes,#mainModalPopup
+Floating Download Brochure and Enquire Now buttons,lead capture,must,yes,yes,mobile bottom bar variant
+Configurations tabs 2 BHK / 3 BHK with floorplan carousel,configurations,must,yes,yes,3 + 8 plans
+Get Quotes hover overlay on floorplans,configurations,must,yes,yes,opens modal
+Amenities carousel,amenities,must,yes,yes,6 cards; Owl carousel
+Photo gallery with lightbox,gallery,must,yes,yes,35 images; Swiper + Fancybox
+Location map with lightbox and POI accordion,location,must,yes,yes,4 groups x 5 POIs
+About Us section,about,should,yes,yes,
+Our Legacy animated counters,about,should,yes,yes,count.js
+Contact section with form,lead capture,should,yes,yes,
+Smooth scroll (Lenis) and scroll animations (AOS GSAP),motion,should,yes,yes,all from CDN
+Campaign attribution cookies from URL params,tracking,should,yes,yes,url-tracking.js; 30 days
+Hidden fullurl and inputsource fields on forms,tracking,should,yes,yes,
+?v=2 variant adds configuration and site-visit selects,lead capture,should,yes,yes,inline script in index.html
+Gallery Videos tab,gallery,could,yes,yes,the 3 webp files are 404 on the original too
+RERA QR codes in footer,footer,could,yes,yes,markup present but commented out; QR svgs 404 on the original
+Favicon,branding,could,yes,yes,
+Thank-you page and server-side lead handler,lead capture,must,yes,no,thank-you.php is PHP on their server; write your own
+Google Tag Manager container,tracking,should,yes,skip,GTM-T9M7N7S5 belongs to the owner; replace with your own ID
+Facebook conversion API via Realatte,tracking,should,yes,skip,posts to fbconversion.realatte.com; remove or replace
+Trial fonts Tartuffo and TT Neoris,design,must,yes,skip,trial licences; buy or swap before launch
+Gurukrupa brand copy photos and floorplans,branding,must,yes,skip,replace with Harbor Realty content
