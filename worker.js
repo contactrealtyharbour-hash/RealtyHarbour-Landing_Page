@@ -1,10 +1,11 @@
-// POST /api/lead on Cloudflare Pages (same behaviour as api/lead.js on Vercel).
+// Cloudflare Worker for the Realty Harbour landing page.
+// Static files come from dist/ (built by build.sh); this script only handles POST /api/lead.
 //
-// Configure in Cloudflare → Workers & Pages → realty-harbour → Settings → Variables and Secrets:
+// Configure in Cloudflare → Workers & Pages → realtyharbour → Settings → Variables and Secrets:
 //   LEAD_WEBHOOK_URL   a URL that receives the lead as JSON (Google Apps Script, Zapier, Make, your CRM)
 //   RESEND_API_KEY     + LEAD_TO_EMAIL (comma-separated) to email each lead via resend.com
 //   LEAD_FROM_EMAIL    optional sender for Resend (defaults to onboarding@resend.dev until you verify a domain)
-// Every lead is also written to the function log (Pages → Deployments → Logs / Real-time logs).
+// Every lead is also written to the Worker log (Observability → Logs).
 
 const MOBILE = /^[6-9]\d{9}$/;
 const EMAIL = /^[^@\s]+@[^@\s]+\.[^@\s]+$/;
@@ -21,7 +22,7 @@ function parseCookies(header) {
   return out;
 }
 
-export async function onRequestPost({ request, env }) {
+async function handleLead(request, env) {
   const form = await request.formData();
   const f = (k) => String(form.get(k) || "").trim();
   const thanks = () => Response.redirect(new URL("/thank-you", request.url).toString(), 303);
@@ -80,4 +81,13 @@ export async function onRequestPost({ request, env }) {
   return thanks();
 }
 
-export const onRequestGet = () => new Response("Method not allowed", { status: 405 });
+export default {
+  async fetch(request, env) {
+    if (new URL(request.url).pathname === "/api/lead") {
+      return request.method === "POST"
+        ? handleLead(request, env)
+        : new Response("Method not allowed", { status: 405 });
+    }
+    return env.ASSETS.fetch(request);
+  },
+};

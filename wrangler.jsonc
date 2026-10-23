@@ -1,0 +1,14 @@
+{
+  // Cloudflare Worker "realtyharbour": serves the static site from dist/ and handles POST /api/lead.
+  // `npx wrangler deploy` runs build.sh first (see "build"), so no dashboard build command is needed.
+  "name": "realtyharbour",
+  "main": "worker.js",
+  "compatibility_date": "2026-10-01",
+  "build": { "command": "sh build.sh" },
+  "assets": {
+    "directory": "./dist",
+    "binding": "ASSETS",
+    "not_found_handling": "404-page"
+  },
+  "observability": { "enabled": true }
+}
