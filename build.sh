@@ -7,4 +7,4 @@
 set -e
 cd "$(dirname "$0")"
 rm -rf dist && mkdir dist
-cp -R index.html thank-you.html css js assets dist/
+cp -R index.html thank-you.html 404.html css js assets dist/
