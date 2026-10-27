@@ -103,14 +103,18 @@
         <!-- hero -->
         <section class="main-banner">
             <div class="hero">
+                <div class="hero-bg is-active" style="background-image: url('assets/images/banner/hero.webp')"></div>
+                <div class="hero-bg" style="background-image: url('assets/images/banner/hero-2.webp')"></div>
                 <div class="container">
                     <div class="row align-items-center g-5">
                         <div class="col-lg-7">
                             <div class="hero-eyebrow" data-aos="fade-up">Realty Harbour presents</div>
                             <h1 class="hero-title" data-aos="fade-up">Premium 2, 3 &amp; 4 BHK Homes in Chennai</h1>
                             <p class="hero-sub" data-aos="fade-up">
-                                Explore TVS Emerald Avalon in Pallavaram and Charan&#39;s Aishwaryam in Madipakkam with
-                                Realty Harbour, your trusted real estate partner in Chennai.
+                                <span class="hero-sub-slide is-active">Explore TVS Emerald Avalon in Pallavaram: premium 2 &amp; 3 BHK apartments
+                                    and 4 BHK duplex homes with Realty Harbour, your trusted real estate partner in Chennai.</span>
+                                <span class="hero-sub-slide">Explore Charan&#39;s Aishwaryam in Madipakkam: an exclusive collection of 2 &amp; 3 BHK
+                                    apartments with Realty Harbour, your trusted real estate partner in Chennai.</span>
                             </p>
                             <div class="hero-actions" data-aos="fade-up">
                                 <button class="btn-hero accent" data-bs-toggle="modal" data-bs-target="#mainModalPopup">
@@ -178,21 +182,30 @@
                     </div>
 
                     <div class="overview-main-content">
-                        <div class="overview-content col-lg-10 mx-auto">
-                            <div class="section-heading">
-                                <p class="section-desc text-balance text-center" data-aos="fade-up">
-                                    TVS Emerald Avalon and Charan&#39;s Aishwaryam offer thoughtfully designed residential living,
-                                    combining contemporary architecture, everyday comfort, and strategic connectivity. From
-                                    Avalon&#39;s premium lifestyle amenities, spacious 2 &amp; 3 BHK residences, and expansive
-                                    clubhouse to Aishwaryam&#39;s exclusive collection of 2 &amp; 3 BHK apartments in Madipakkam,
-                                    each development caters to the evolving needs of modern homebuyers.
-                                </p>
-                                <p class="section-desc text-balance mt-4 text-center" data-aos="fade-up">
-                                    With a focus on well-planned living spaces, essential amenities, and convenient access to key
-                                    destinations, both projects offer a balance of comfort, accessibility, and quality living.
-                                    Whether seeking a vibrant residential community or a more intimate neighbourhood setting,
-                                    these developments present appealing options for families looking for homes in Chennai.
-                                </p>
+                        <div class="row g-4 g-md-5 align-items-center">
+                            <div class="col-lg-7">
+                                <div class="overview-content">
+                                    <div class="section-heading">
+                                        <p class="section-desc text-balance text-center text-lg-start" data-aos="fade-up">
+                                            TVS Emerald Avalon and Charan&#39;s Aishwaryam offer thoughtfully designed residential living,
+                                            combining contemporary architecture, everyday comfort, and strategic connectivity. From
+                                            Avalon&#39;s premium lifestyle amenities, spacious 2 &amp; 3 BHK residences, and expansive
+                                            clubhouse to Aishwaryam&#39;s exclusive collection of 2 &amp; 3 BHK apartments in Madipakkam,
+                                            each development caters to the evolving needs of modern homebuyers.
+                                        </p>
+                                        <p class="section-desc text-balance mt-4 text-center text-lg-start" data-aos="fade-up">
+                                            With a focus on well-planned living spaces, essential amenities, and convenient access to key
+                                            destinations, both projects offer a balance of comfort, accessibility, and quality living.
+                                            Whether seeking a vibrant residential community or a more intimate neighbourhood setting,
+                                            these developments present appealing options for families looking for homes in Chennai.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-5">
+                                <div class="overview-img" data-aos="fade-up">
+                                    <img src="assets/images/overview/living-room.webp" alt="Living and dining room interior" class="img-fluid" loading="lazy">
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -912,6 +925,15 @@
                 breakpoints: { 768: { slidesPerView: 2, spaceBetween: 30 }, 992: { slidesPerView: 3, spaceBetween: 30 } }
             });
             new Swiper("#swiper-avalon", swiperOpts("avalon"));
+
+            // hero: crossfade between the project backgrounds and captions every 7 seconds
+            const heroBgs = document.querySelectorAll(".hero-bg"), heroSubs = document.querySelectorAll(".hero-sub-slide");
+            let heroIndex = 0;
+            setInterval(() => {
+                heroIndex = (heroIndex + 1) % heroBgs.length;
+                heroBgs.forEach((el, k) => el.classList.toggle("is-active", k === heroIndex));
+                heroSubs.forEach((el, k) => el.classList.toggle("is-active", k === heroIndex));
+            }, 7000);
             new Swiper("#swiper-aish", swiperOpts("aish"));
 
             new Swiper(".gallery-swiper", {
