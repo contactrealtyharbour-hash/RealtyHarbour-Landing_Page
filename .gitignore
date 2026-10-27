@@ -6,3 +6,4 @@ replica/screens/
 dist/
 SEIRIQ-1c-quorum.png
 .wrangler/
+/*.png
