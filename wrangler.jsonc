@@ -5,6 +5,10 @@
   "main": "worker.js",
   "compatibility_date": "2026-10-01",
   "build": { "command": "sh build.sh" },
+  "keep_vars": true,
+  "vars": {
+    "LEAD_WEBHOOK_URL": "https://script.google.com/macros/s/AKfycbwsSZH4-QVpMjAM7m_TnSfg-s9RRsRiTQwfsO_zSnynJ4CAbOC0DIoJewtJg9zSITBU/exec"
+  },
   "assets": {
     "directory": "./dist",
     "binding": "ASSETS",

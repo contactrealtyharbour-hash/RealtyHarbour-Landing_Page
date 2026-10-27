@@ -36,20 +36,24 @@ async function handleLead(request, env) {
   if (f("company")) return thanks(); // honeypot: bots fill the hidden field
 
   const name = f("fname");
-  const mobile = f("mobile").replace(/\D/g, "");
+  const phone = f("mobile").replace(/\D/g, "");
   const email = f("email");
-  if (!name || !MOBILE.test(mobile) || !EMAIL.test(email)) {
+  const project = f("project").slice(0, 100);
+  if (!name || !MOBILE.test(phone) || !EMAIL.test(email)) {
     return new Response("Please go back and check your name, 10-digit mobile number and email.", { status: 400 });
   }
 
   const cookies = parseCookies(request.headers.get("cookie"));
+  // Flat object: the Google Apps Script webhook reads name, phone, email, project from the JSON body;
+  // tracking cookies (utm_*, gclid, fbclid, srd, cstm_ppc_*) are spread in as extra top-level keys.
   const lead = {
     name,
-    mobile,
+    phone,
     email,
+    project,
     source: f("source"),
     page: request.headers.get("referer") || "",
-    attribution: Object.fromEntries(Object.entries(cookies).filter(([k]) => /^(utm_|gclid|fbclid|srd|cstm_ppc_)/.test(k))),
+    ...Object.fromEntries(Object.entries(cookies).filter(([k]) => /^(utm_|gclid|fbclid|srd|cstm_ppc_)/.test(k))),
     ip: request.headers.get("cf-connecting-ip") || "",
     userAgent: request.headers.get("user-agent") || "",
     receivedAt: new Date().toISOString(),
@@ -66,7 +70,7 @@ async function handleLead(request, env) {
   }
   if (env.RESEND_API_KEY && env.LEAD_TO_EMAIL) {
     const text = Object.entries(lead)
-      .map(([k, v]) => `${k}: ${typeof v === "object" ? JSON.stringify(v) : v}`)
+      .map(([k, v]) => `${k}: ${v}`)
       .join("\n");
     jobs.push(fetch("https://api.resend.com/emails", {
       method: "POST",
@@ -74,14 +78,16 @@ async function handleLead(request, env) {
       body: JSON.stringify({
         from: env.LEAD_FROM_EMAIL || "Realty Harbour <onboarding@resend.dev>",
         to: env.LEAD_TO_EMAIL.split(",").map((s) => s.trim()),
-        subject: `New lead: ${name} (${mobile}) via ${lead.source || "website"}`,
+        subject: `New lead: ${name} (${phone})${project ? " for " + project : ""} via ${lead.source || "website"}`,
         text,
       }),
     }));
   }
   for (const r of await Promise.allSettled(jobs)) {
-    if (r.status === "rejected") console.error("LEAD forward failed", r.reason);
-    else if (!r.value.ok) console.error("LEAD forward responded", r.value.status, await r.value.text().catch(() => ""));
+    if (r.status === "rejected") { console.error("LEAD forward failed", r.reason); continue; }
+    const body = await r.value.text().catch(() => "");
+    if (!r.value.ok || /"success"\s*:\s*false/.test(body)) console.error("LEAD forward responded", r.value.status, body.slice(0, 300));
+    else console.log("LEAD forwarded", r.value.status, body.slice(0, 120));
   }
 
   return thanks();

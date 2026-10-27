@@ -2099,6 +2099,10 @@ section.section-gallery { padding: 4rem 0; }
 .about-card .ac-item { display: flex; gap: 0.85rem; align-items: flex-start; padding: 0.75rem 0; border-top: 1px solid rgba(255, 255, 255, 0.12); }
 .about-card .ac-item i { color: var(--accent); margin-top: 0.2rem; }
 
+/* project dropdown in forms */
+select.custom-input { padding-right: 2.75rem; }
+select.custom-input:invalid { color: var(--text-color-2); }
+
 /* contact, modal, footer */
 .contact-logo img { width: 200px; object-fit: contain; }
 .contact-title { color: var(--primary); font-size: 1.6rem; }

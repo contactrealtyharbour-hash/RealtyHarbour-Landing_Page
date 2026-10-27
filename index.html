@@ -142,6 +142,14 @@
                                         <div class="invalid-feedback">Please enter an email address.</div>
                                     </div>
                                     <div class="col-12">
+                                        <select class="form-select custom-input" name="project" required>
+                                            <option value="" selected disabled>Select Project*</option>
+                                            <option value="TVS Emerald Avalon">TVS Emerald Avalon</option>
+                                            <option value="Charan's Aishwaryam">Charan&#39;s Aishwaryam</option>
+                                        </select>
+                                        <div class="invalid-feedback">Please select a project.</div>
+                                    </div>
+                                    <div class="col-12">
                                         <div class="form-check">
                                             <input class="form-check-input" type="checkbox" checked value="yes" id="agree1" name="agree" required />
                                             <label class="form-check-label" for="agree1">By using this form you agree with the storage and handling of your data by this website.</label>
@@ -737,22 +745,28 @@
                     <form class="row g-4 needs-validation" autocomplete="off" action="/api/lead" method="post" novalidate>
                         <input type="hidden" name="source" value="contact-form" />
                         <input type="text" name="company" class="d-none" tabindex="-1" autocomplete="off" />
-                        <div class="col-xl-3 col-lg-3 col-md-6">
+                        <div class="col-lg-3 col-md-6">
                             <input type="text" class="form-control custom-input only-letters" placeholder="Your Full Name*" name="fname" required />
                             <div class="invalid-feedback">Please enter a valid name.</div>
                         </div>
-                        <div class="col-xl-3 col-lg-3 col-md-6">
+                        <div class="col-lg-3 col-md-6">
                             <input type="text" class="form-control custom-input number-only" maxlength="10" name="mobile" inputmode="numeric" placeholder="Phone Number*" required />
                             <div class="invalid-feedback">Please enter a mobile no.</div>
                         </div>
-                        <div class="col-xl-3 col-lg-3 col-md-12">
+                        <div class="col-lg-3 col-md-6">
                             <input type="email" class="form-control custom-input" placeholder="Email*" name="email" inputmode="email" required />
                             <div class="invalid-feedback">Please enter an email address.</div>
                         </div>
-                        <div class="col-xl-3 col-lg-3 col-md-12">
-                            <div class="d-flex justify-content-center justify-content-lg-start w-100">
-                                <button class="btn-submit btn-submit-1" type="submit"><span class="form-txt">Submit</span></button>
-                            </div>
+                        <div class="col-lg-3 col-md-6">
+                            <select class="form-select custom-input" name="project" required>
+                                <option value="" selected disabled>Select Project*</option>
+                                <option value="TVS Emerald Avalon">TVS Emerald Avalon</option>
+                                <option value="Charan's Aishwaryam">Charan&#39;s Aishwaryam</option>
+                            </select>
+                            <div class="invalid-feedback">Please select a project.</div>
+                        </div>
+                        <div class="col-12 d-flex justify-content-center">
+                            <button class="btn-submit btn-submit-1" type="submit"><span class="form-txt">Submit</span></button>
                         </div>
                     </form>
                 </div>
@@ -816,6 +830,14 @@
                                 <div class="col-12">
                                     <input type="text" class="form-control custom-input number-only" name="mobile" maxlength="10" inputmode="numeric" placeholder="Phone Number*" required />
                                     <div class="invalid-feedback">Please enter a valid mobile no.</div>
+                                </div>
+                                <div class="col-12">
+                                    <select class="form-select custom-input" name="project" required>
+                                        <option value="" selected disabled>Select Project*</option>
+                                        <option value="TVS Emerald Avalon">TVS Emerald Avalon</option>
+                                        <option value="Charan's Aishwaryam">Charan&#39;s Aishwaryam</option>
+                                    </select>
+                                    <div class="invalid-feedback">Please select a project.</div>
                                 </div>
                                 <div class="col-12">
                                     <div class="form-check">
