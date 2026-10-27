@@ -12,7 +12,9 @@
   "assets": {
     "directory": "./dist",
     "binding": "ASSETS",
-    "not_found_handling": "404-page"
+    "not_found_handling": "404-page",
+    // Browser form posts are navigation requests; without this the asset layer answers them with 405.
+    "run_worker_first": ["/api/*"]
   },
   "observability": { "enabled": true }
 }
