@@ -43,19 +43,43 @@ async function handleLead(request, env) {
     return new Response("Please go back and check your name, 10-digit mobile number and email.", { status: 400 });
   }
 
+  // Tracking values: the page URL the form was sent from (Referer) wins, then the 30-day cookies
+  // that js/url-tracking.js stores from the landing URL.
   const cookies = parseCookies(request.headers.get("cookie"));
-  // Flat object: the Google Apps Script webhook reads name, phone, email, project from the JSON body;
-  // tracking cookies (utm_*, gclid, fbclid, srd, cstm_ppc_*) are spread in as extra top-level keys.
+  const page = request.headers.get("referer") || "";
+  let pageParams = new URLSearchParams();
+  try { pageParams = new URL(page).searchParams; } catch (_) { /* no referer */ }
+  const t = (k) => (pageParams.get(k) || cookies[k] || "").trim();
+  const ua = request.headers.get("user-agent") || "";
+  const ip = request.headers.get("cf-connecting-ip") || "";
+  // Google Ads {device} is m / t / c; otherwise classify the browser.
+  const device = { m: "Mobile", t: "Tablet", c: "Desktop" }[t("cstm_ppc_device").toLowerCase()]
+    || (/iPad|Tablet/i.test(ua) ? "Tablet" : /Mobi|Android|iPhone/i.test(ua) ? "Mobile" : "Desktop");
+
+  // Field names are what the Google Apps Script webhook maps to sheet columns.
   const lead = {
     name,
     phone,
     email,
     project,
-    source: f("source"),
-    page: request.headers.get("referer") || "",
-    ...Object.fromEntries(Object.entries(cookies).filter(([k]) => /^(utm_|gclid|fbclid|srd|cstm_ppc_)/.test(k))),
-    ip: request.headers.get("cf-connecting-ip") || "",
-    userAgent: request.headers.get("user-agent") || "",
+    source: t("utm_source") || t("cstm_ppc_channel") || "Direct",
+    campaign: t("utm_campaign") || t("cstm_ppc_campaign"),
+    channel: t("cstm_ppc_channel") || t("utm_channel") || t("utm_medium"),
+    keyword: t("utm_term") || t("cstm_ppc_keyword"),
+    placement: t("utm_placement") || t("cstm_ppc_placement"),
+    device,
+    medium: t("utm_medium"),
+    gclid: t("gclid") || t("utm_GCLID"),
+    ad: t("utm_content") || t("utm_Ad"),
+    adset: t("adset"),
+    adgroup: t("adgroup") || t("utm_ad_group"),
+    ip,
+    ipAddress: ip, // the script's key for the IP column is not known; cover the common spellings
+    ip_address: ip,
+    fbclid: t("fbclid"),
+    form: f("source"),
+    page,
+    userAgent: ua,
     receivedAt: new Date().toISOString(),
   };
   console.log("LEAD", JSON.stringify(lead));
@@ -78,7 +102,7 @@ async function handleLead(request, env) {
       body: JSON.stringify({
         from: env.LEAD_FROM_EMAIL || "Realty Harbour <onboarding@resend.dev>",
         to: env.LEAD_TO_EMAIL.split(",").map((s) => s.trim()),
-        subject: `New lead: ${name} (${phone})${project ? " for " + project : ""} via ${lead.source || "website"}`,
+        subject: `New lead: ${name} (${phone})${project ? " for " + project : ""} via ${lead.form || "website"}`,
         text,
       }),
     }));
