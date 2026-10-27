@@ -1,5 +1,6 @@
 // Cloudflare Worker for the Realty Harbour landing page.
-// Static files come from dist/ (built by build.sh); this script only handles POST /api/lead.
+// Static files come from dist/ (built by build.sh); this script only runs when no file matches.
+// It handles POST /api/lead and the page routes of the Bollineni Zion single-page app.
 //
 // Configure in Cloudflare → Workers & Pages → realtyharbour → Settings → Variables and Secrets:
 //   LEAD_WEBHOOK_URL   a URL that receives the lead as JSON (Google Apps Script, Zapier, Make, your CRM)
@@ -9,6 +10,11 @@
 
 const MOBILE = /^[6-9]\d{9}$/;
 const EMAIL = /^[^@\s]+@[^@\s]+\.[^@\s]+$/;
+
+// Bollineni Zion (bollineni-zion/) routes pages in the browser, so a path such as
+// /bollineni-zion/thank-you has no file of its own: serve the app's index.html for it.
+const ZION = "/bollineni-zion/";
+const HAS_EXTENSION = /\.[a-z0-9]+$/i;
 
 function parseCookies(header) {
   const out = {};
@@ -83,10 +89,15 @@ async function handleLead(request, env) {
 
 export default {
   async fetch(request, env) {
-    if (new URL(request.url).pathname === "/api/lead") {
+    const url = new URL(request.url);
+    if (url.pathname === "/api/lead") {
       return request.method === "POST"
         ? handleLead(request, env)
         : new Response("Method not allowed", { status: 405 });
+    }
+    if (url.pathname.startsWith(ZION) && !HAS_EXTENSION.test(url.pathname)
+        && (request.method === "GET" || request.method === "HEAD")) {
+      return env.ASSETS.fetch(new Request(new URL(ZION, url), request));
     }
     return env.ASSETS.fetch(request);
   },
