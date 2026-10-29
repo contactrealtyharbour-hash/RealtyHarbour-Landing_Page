@@ -2037,6 +2037,11 @@ body { color: var(--text-color); }
 .overview-img { border-radius: 12px; overflow: hidden; box-shadow: rgba(100, 100, 111, 0.2) 0 7px 29px 0; }
 .overview-img img { width: 100%; display: block; }
 .hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 2rem; }
+.hero-nav { display: inline-flex; align-items: center; gap: 0.5rem; margin-top: 2rem; padding: 0.25rem; border-radius: var(--radius-full); background: rgba(255, 255, 255, 0.12); border: 1px solid rgba(255, 255, 255, 0.2); backdrop-filter: blur(6px); }
+.hero-nav-btn { width: 32px; height: 32px; border: none; border-radius: 50%; background: transparent; color: #fff; display: grid; place-items: center; font-size: 0.8rem; cursor: pointer; transition: background 0.3s ease; }
+.hero-nav-btn:hover { background: rgba(255, 255, 255, 0.18); }
+.hero-dot { width: 8px; height: 8px; padding: 0; border: none; border-radius: var(--radius-full); background: rgba(255, 255, 255, 0.45); cursor: pointer; transition: width 0.4s ease, background 0.4s ease; }
+.hero-dot.is-active { width: 22px; background: var(--accent); }
 .btn-hero { border: none; border-radius: var(--radius-full); padding: 0.85rem 1.75rem; font-weight: 600; display: inline-flex; align-items: center; gap: 0.5rem; cursor: pointer; font-size: 1rem; }
 .btn-hero.accent { background: var(--accent); color: var(--primary); }
 .btn-hero.ghost { background: transparent; color: #fff; border: 1.5px solid rgba(255, 255, 255, 0.6); }
@@ -2072,8 +2077,8 @@ body { color: var(--text-color); }
 .amenities-carousel .owl-dots button.active { width: 25px; background: var(--accent) !important; }
 
 /* location */
-.location-nav { margin: 2.5rem auto 0; display: flex; justify-content: center; }
-.location-nav .custom-nav { flex-wrap: wrap; justify-content: center; }
+.location-nav, .gallery-nav { margin: 2.5rem auto 0; display: flex; justify-content: center; }
+.location-nav .custom-nav, .gallery-nav .custom-nav { flex-wrap: wrap; justify-content: center; }
 .location-accordion .accordion-button .acc-icon i { color: var(--accent); font-size: 1.3rem; }
 .location-accordion .accordion-button .acc-txt { color: #fff; }
 .location-map iframe { width: 100%; height: 100%; min-height: 420px; border: 0; display: block; }

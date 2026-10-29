@@ -124,6 +124,12 @@
                                     Explore Projects <i class="fa-solid fa-arrow-down"></i>
                                 </button>
                             </div>
+                            <div class="hero-nav" data-aos="fade-up">
+                                <button class="hero-nav-btn" type="button" data-hero-step="-1" aria-label="Previous project"><i class="fa-solid fa-chevron-left"></i></button>
+                                <button class="hero-dot is-active" type="button" data-hero-go="0" aria-label="TVS Emerald Avalon"></button>
+                                <button class="hero-dot" type="button" data-hero-go="1" aria-label="Charan's Aishwaryam"></button>
+                                <button class="hero-nav-btn" type="button" data-hero-step="1" aria-label="Next project"><i class="fa-solid fa-chevron-right"></i></button>
+                            </div>
                         </div>
                         <div class="col-lg-5">
                             <div class="overview-form" data-aos="fade-up">
@@ -404,67 +410,106 @@
                 <div class="section-heading">
                     <h2 class="section-title text-center" data-aos="fade-up">Gallery</h2>
                 </div>
+
+                <div class="config-nav gallery-nav" data-aos="fade-up">
+                    <ul class="nav custom-nav nav-pills" id="galleryTabs" role="tablist">
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link active" id="gal-tab-avalon" data-bs-toggle="pill" data-bs-target="#gal-avalon" type="button" role="tab" aria-controls="gal-avalon" aria-selected="true">
+                                <span class="icon"><i class="fa-solid fa-images"></i></span>
+                                <span class="txt">TVS Emerald Avalon</span>
+                            </button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="gal-tab-aish" data-bs-toggle="pill" data-bs-target="#gal-aish" type="button" role="tab" aria-controls="gal-aish" aria-selected="false">
+                                <span class="icon"><i class="fa-solid fa-images"></i></span>
+                                <span class="txt">Charan&#39;s Aishwaryam</span>
+                            </button>
+                        </li>
+                    </ul>
+                </div>
             </div>
             <div class="gallery-content" data-aos="fade-up">
-                <div class="gallery-swiper-container">
-                    <div class="swiper gallery-swiper">
-                        <div class="swiper-wrapper">
-                            <div class="swiper-slide">
-                                <div class="gallery-img">
-                                    <a href="assets/images/gallery/01.webp" data-fancybox="gallery"><img src="assets/images/gallery/01.webp" loading="lazy" class="img-fluid" alt="Aerial view of the landscaped apartment campus"></a>
+                <div class="tab-content">
+                    <div class="tab-pane fade show active" id="gal-avalon" role="tabpanel" aria-labelledby="gal-tab-avalon" tabindex="0">
+                        <div class="gallery-swiper-container">
+                            <div class="swiper gallery-swiper">
+                                <div class="swiper-wrapper">
+                                    <div class="swiper-slide">
+                                        <div class="gallery-img">
+                                            <a href="assets/images/gallery/01.webp" data-fancybox="gallery-avalon"><img src="assets/images/gallery/01.webp" loading="lazy" class="img-fluid" alt="Aerial view of the landscaped apartment campus"></a>
+                                        </div>
+                                    </div>
+                                    <div class="swiper-slide">
+                                        <div class="gallery-img">
+                                            <a href="assets/images/banner/hero.webp" data-fancybox="gallery-avalon"><img src="assets/images/banner/hero.webp" loading="lazy" class="img-fluid" alt="Terracotta high-rise apartment towers"></a>
+                                        </div>
+                                    </div>
+                                    <div class="swiper-slide">
+                                        <div class="gallery-img">
+                                            <a href="assets/images/gallery/03.webp" data-fancybox="gallery-avalon"><img src="assets/images/gallery/03.webp" loading="lazy" class="img-fluid" alt="Project entrance at dusk"></a>
+                                        </div>
+                                    </div>
+                                    <div class="swiper-slide">
+                                        <div class="gallery-img">
+                                            <a href="assets/images/gallery/04.webp" data-fancybox="gallery-avalon"><img src="assets/images/gallery/04.webp" loading="lazy" class="img-fluid" alt="Swimming pool courtyard at twilight"></a>
+                                        </div>
+                                    </div>
+                                    <div class="swiper-slide">
+                                        <div class="gallery-img">
+                                            <a href="assets/images/gallery/08.webp" data-fancybox="gallery-avalon"><img src="assets/images/gallery/08.webp" loading="lazy" class="img-fluid" alt="Master bedroom"></a>
+                                        </div>
+                                    </div>
                                 </div>
+                                <div class="swiper-scrollbar"></div>
                             </div>
-                            <div class="swiper-slide">
-                                <div class="gallery-img">
-                                    <a href="assets/images/gallery/02.webp" data-fancybox="gallery"><img src="assets/images/gallery/02.webp" loading="lazy" class="img-fluid" alt="Apartment towers with balconies and greenery"></a>
-                                </div>
-                            </div>
-                            <div class="swiper-slide">
-                                <div class="gallery-img">
-                                    <a href="assets/images/gallery/03.webp" data-fancybox="gallery"><img src="assets/images/gallery/03.webp" loading="lazy" class="img-fluid" alt="Project entrance at dusk"></a>
-                                </div>
-                            </div>
-                            <div class="swiper-slide">
-                                <div class="gallery-img">
-                                    <a href="assets/images/gallery/04.webp" data-fancybox="gallery"><img src="assets/images/gallery/04.webp" loading="lazy" class="img-fluid" alt="Swimming pool courtyard at twilight"></a>
-                                </div>
-                            </div>
-                            <div class="swiper-slide">
-                                <div class="gallery-img">
-                                    <a href="assets/images/gallery/05.webp" data-fancybox="gallery"><img src="assets/images/gallery/05.webp" loading="lazy" class="img-fluid" alt="Villa facade at golden hour"></a>
-                                </div>
-                            </div>
-                            <div class="swiper-slide">
-                                <div class="gallery-img">
-                                    <a href="assets/images/gallery/06.webp" data-fancybox="gallery"><img src="assets/images/gallery/06.webp" loading="lazy" class="img-fluid" alt="Living and dining room"></a>
-                                </div>
-                            </div>
-                            <div class="swiper-slide">
-                                <div class="gallery-img">
-                                    <a href="assets/images/gallery/07.webp" data-fancybox="gallery"><img src="assets/images/gallery/07.webp" loading="lazy" class="img-fluid" alt="Modular kitchen"></a>
-                                </div>
-                            </div>
-                            <div class="swiper-slide">
-                                <div class="gallery-img">
-                                    <a href="assets/images/gallery/08.webp" data-fancybox="gallery"><img src="assets/images/gallery/08.webp" loading="lazy" class="img-fluid" alt="Master bedroom"></a>
-                                </div>
-                            </div>
-                            <div class="swiper-slide">
-                                <div class="gallery-img">
-                                    <a href="assets/images/gallery/09.webp" data-fancybox="gallery"><img src="assets/images/gallery/09.webp" loading="lazy" class="img-fluid" alt="Bedroom with feature wall"></a>
-                                </div>
-                            </div>
-                            <div class="swiper-slide">
-                                <div class="gallery-img">
-                                    <a href="assets/images/gallery/10.webp" data-fancybox="gallery"><img src="assets/images/gallery/10.webp" loading="lazy" class="img-fluid" alt="Themed kids bedroom"></a>
-                                </div>
+                            <div class="swiper-nav">
+                                <div class="swiper-button swiper-button-prev-2"><img src="assets/images/icons/left.svg" alt="previous" /></div>
+                                <div class="swiper-button swiper-button-next-2"><img src="assets/images/icons/right.svg" alt="next" /></div>
                             </div>
                         </div>
-                        <div class="swiper-scrollbar"></div>
                     </div>
-                    <div class="swiper-nav">
-                        <div class="swiper-button swiper-button-prev-2"><img src="assets/images/icons/left.svg" alt="previous" /></div>
-                        <div class="swiper-button swiper-button-next-2"><img src="assets/images/icons/right.svg" alt="next" /></div>
+                    <div class="tab-pane fade" id="gal-aish" role="tabpanel" aria-labelledby="gal-tab-aish" tabindex="0">
+                        <div class="gallery-swiper-container">
+                            <div class="swiper gallery-swiper">
+                                <div class="swiper-wrapper">
+                                    <div class="swiper-slide">
+                                        <div class="gallery-img">
+                                            <a href="assets/images/gallery/02.webp" data-fancybox="gallery-aish"><img src="assets/images/gallery/02.webp" loading="lazy" class="img-fluid" alt="Apartment towers with balconies and greenery"></a>
+                                        </div>
+                                    </div>
+                                    <div class="swiper-slide">
+                                        <div class="gallery-img">
+                                            <a href="assets/images/gallery/05.webp" data-fancybox="gallery-aish"><img src="assets/images/gallery/05.webp" loading="lazy" class="img-fluid" alt="Villa facade at golden hour"></a>
+                                        </div>
+                                    </div>
+                                    <div class="swiper-slide">
+                                        <div class="gallery-img">
+                                            <a href="assets/images/gallery/06.webp" data-fancybox="gallery-aish"><img src="assets/images/gallery/06.webp" loading="lazy" class="img-fluid" alt="Living and dining room"></a>
+                                        </div>
+                                    </div>
+                                    <div class="swiper-slide">
+                                        <div class="gallery-img">
+                                            <a href="assets/images/gallery/07.webp" data-fancybox="gallery-aish"><img src="assets/images/gallery/07.webp" loading="lazy" class="img-fluid" alt="Modular kitchen"></a>
+                                        </div>
+                                    </div>
+                                    <div class="swiper-slide">
+                                        <div class="gallery-img">
+                                            <a href="assets/images/gallery/09.webp" data-fancybox="gallery-aish"><img src="assets/images/gallery/09.webp" loading="lazy" class="img-fluid" alt="Bedroom with feature wall"></a>
+                                        </div>
+                                    </div>
+                                    <div class="swiper-slide">
+                                        <div class="gallery-img">
+                                            <a href="assets/images/gallery/10.webp" data-fancybox="gallery-aish"><img src="assets/images/gallery/10.webp" loading="lazy" class="img-fluid" alt="Themed kids bedroom"></a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="swiper-scrollbar"></div>
+                            </div>
+                            <div class="swiper-nav">
+                                <div class="swiper-button swiper-button-prev-2"><img src="assets/images/icons/left.svg" alt="previous" /></div>
+                                <div class="swiper-button swiper-button-next-2"><img src="assets/images/icons/right.svg" alt="next" /></div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -926,22 +971,39 @@
             });
             new Swiper("#swiper-avalon", swiperOpts("avalon"));
 
-            // hero: crossfade between the project backgrounds and captions every 7 seconds
-            const heroBgs = document.querySelectorAll(".hero-bg"), heroSubs = document.querySelectorAll(".hero-sub-slide");
-            let heroIndex = 0;
-            setInterval(() => {
-                heroIndex = (heroIndex + 1) % heroBgs.length;
-                heroBgs.forEach((el, k) => el.classList.toggle("is-active", k === heroIndex));
-                heroSubs.forEach((el, k) => el.classList.toggle("is-active", k === heroIndex));
-            }, 7000);
+            // hero: crossfade between the project backgrounds and captions every 7 seconds; arrows, dots and swipe jump and restart the timer
+            const hero = document.querySelector(".hero"), heroBgs = hero.querySelectorAll(".hero-bg");
+            const heroSlides = [heroBgs, hero.querySelectorAll(".hero-sub-slide"), hero.querySelectorAll(".hero-dot")];
+            let heroIndex = 0, heroTimer, touchX = null, touchY = 0;
+            const showHero = (i) => {
+                heroIndex = (i + heroBgs.length) % heroBgs.length;
+                heroSlides.forEach((els) => els.forEach((el, k) => el.classList.toggle("is-active", k === heroIndex)));
+                clearTimeout(heroTimer);
+                heroTimer = setTimeout(() => showHero(heroIndex + 1), 7000);
+            };
+            showHero(0);
+            hero.querySelectorAll("[data-hero-step]").forEach((b) => b.addEventListener("click", () => showHero(heroIndex + +b.dataset.heroStep)));
+            hero.querySelectorAll("[data-hero-go]").forEach((b) => b.addEventListener("click", () => showHero(+b.dataset.heroGo)));
+            hero.addEventListener("touchstart", (e) => {
+                touchX = e.target.closest(".overview-form") ? null : e.touches[0].clientX;
+                touchY = e.touches[0].clientY;
+            }, { passive: true });
+            hero.addEventListener("touchend", (e) => {
+                if (touchX === null) return;
+                const dx = e.changedTouches[0].clientX - touchX, dy = e.changedTouches[0].clientY - touchY;
+                if (Math.abs(dx) > 50 && Math.abs(dx) > Math.abs(dy)) showHero(heroIndex + (dx < 0 ? 1 : -1));
+                touchX = null;
+            });
             new Swiper("#swiper-aish", swiperOpts("aish"));
 
-            new Swiper(".gallery-swiper", {
+            // one gallery swiper per project tab, each wired to its own scrollbar and arrows
+            document.querySelectorAll(".gallery-swiper").forEach((el) => new Swiper(el, {
                 slidesPerView: 1, spaceBetween: 20, grabCursor: true, speed: 1400,
-                scrollbar: { el: ".gallery-swiper .swiper-scrollbar", hide: false },
-                navigation: { nextEl: ".swiper-button-next-2", prevEl: ".swiper-button-prev-2" },
+                observer: true, observeParents: true,
+                scrollbar: { el: el.querySelector(".swiper-scrollbar"), hide: false },
+                navigation: { nextEl: el.parentNode.querySelector(".swiper-button-next-2"), prevEl: el.parentNode.querySelector(".swiper-button-prev-2") },
                 breakpoints: { 768: { slidesPerView: 2 }, 992: { slidesPerView: 3 } }
-            });
+            }));
             $("[data-fancybox]").fancybox();
         });
     </script>
