@@ -1005,6 +1005,16 @@
                 breakpoints: { 768: { slidesPerView: 2 }, 992: { slidesPerView: 3 } }
             }));
             $("[data-fancybox]").fancybox();
+
+            // enquiry popup opens by itself 7 seconds into a visitor's first visit; once they have seen it (auto or via a button) it never auto-opens again
+            const popup = $("#mainModalPopup");
+            let popupSeen = false;
+            try { popupSeen = localStorage.getItem("rh-popup-seen") === "1"; } catch (e) { }
+            popup.on("shown.bs.modal", () => { try { localStorage.setItem("rh-popup-seen", "1"); } catch (e) { } });
+            if (!popupSeen) setTimeout(() => {
+                // don't interrupt someone already in a modal or typing in the hero form
+                if (!$(".modal.show").length && !document.activeElement.closest("form")) popup.modal("show");
+            }, 7000);
         });
     </script>
 </body>
